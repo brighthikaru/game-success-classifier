@@ -228,3 +228,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Local-only presentation prep materials (not part of the public repo)
+Game_Success_Classifier.pptx
+Presentation_Cheat_Sheet.docx
+Presentation_Script.docx
+Presentation_Script.md
+Understand_My_Notebook.html
+Understand_My_Repo.html
