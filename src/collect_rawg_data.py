@@ -3,8 +3,7 @@ collect_rawg_data.py
 ────────────────────
 Collects video game data from the RAWG API and saves to CSV.
 
-Filters to games that have a Metacritic score, which is the key
-feature for the MP03 hit vs flop classifier.
+Filters to games from 2000 to 2025.
 
 Usage:
     1. Create a .env file in the same folder with:
@@ -140,8 +139,7 @@ def fetch_page(page: int) -> dict | None:
     """
     params = {
         "key":        API_KEY,
-        "metacritic": "1,100",       # only games with a Metacritic score
-        "ordering":   "-metacritic", # highest scored first
+        "dates":      "2000-01-01,2025-12-31",  # filter from 2000s
         "page_size":  PAGE_SIZE,
         "page":       page,
     }
