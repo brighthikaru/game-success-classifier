@@ -52,9 +52,11 @@ All four real models beat the baseline, confirming there's genuine — if modest
 
 ![Feature importance](outputs/feature_importance.png)
 
-**Predictions vs actual scores:** comparing the model's predictions directly against real Metacritic scores shows its mistakes cluster right at the 75-point cutoff — games that scored exactly 75 are the hardest to call correctly, since a game scoring 73 and one scoring 77 look nearly identical on every feature used here. This is the expected failure mode of a hard binary threshold on a continuous, noisy score, and it's a structural limit that more features alone won't fully fix.
+**Predictions vs actual scores:** grouping games into Metacritic score ranges and plotting accuracy per range shows the model's mistakes cluster right at the 75-point cutoff — accuracy holds up reasonably well away from the boundary (66-76% in most ranges) but falls to 44.3% in the 75-79 range, right where a game first becomes a "Hit." A game scoring 73 and one scoring 77 look nearly identical on every feature used here, so that's the expected failure mode of a hard binary threshold on a continuous, noisy score — a structural limit that more features alone won't fully fix.
 
 ![Predicted vs actual](outputs/predicted_vs_actual.png)
+
+**Split by actual label, not just score range:** looking at the actual Hit/Not Hit label directly tells a related but distinct story — of the games that were genuinely Not Hit, the model correctly called 68.5% of them; of the games that were genuinely a Hit, it only correctly called 53.1%. The model is noticeably more reliable at confirming a game will *underperform* than at confirming it will land as a Hit — a bias worth flagging alongside the cutoff-accuracy result above. See Section 8b of the notebook for the full breakdown table.
 
 ## Limitations
 
